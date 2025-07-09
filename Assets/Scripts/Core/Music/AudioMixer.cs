@@ -4,7 +4,8 @@ using UnityEngine;
 public class AudioMixer : MonoBehaviour
 {
     [SerializeField] private string _volumeName;
-    
+
+    private readonly int _volumeModifier = 20;
     private AudioSource _audioSource;
 
     private void Awake()
@@ -20,6 +21,6 @@ public class AudioMixer : MonoBehaviour
 
     public void ChangeVolume(float volume)
     {
-        _audioSource.outputAudioMixerGroup.audioMixer.SetFloat(_volumeName, Mathf.Log10(volume) * 20);
+        _audioSource.outputAudioMixerGroup.audioMixer.SetFloat(_volumeName, Mathf.Log10(volume) * _volumeModifier);
     }
 }
